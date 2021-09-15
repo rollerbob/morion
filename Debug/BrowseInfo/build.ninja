@@ -1,0 +1,61 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$in+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe" $flags
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe $flags
+  depfile = $out.dep
+  description = IAR_NEW_TOOL+++INDEXER+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe" $flags
+
+rule MAKEBROWSE
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe" $flags
+
+rule PDBLINK
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe" $flags
+
+
+
+#Build steps
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.xcl : COMPILER_XCL 
+  xclcommand = -source_file E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\system_stm32l0xx.c -xcl_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.xcl -macro_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\system_stm32l0xx.c -o E$:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\CMSIS --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M0+ -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\ -I E$:\workspace\stm32\morion_test\morion_test_iar\inc\ -On --predef_macros E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.tmp
+  rspfile_name = E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.xcl.rsp
+
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file E$:\workspace\stm32\morion_test\morion_test_iar\main.c -xcl_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.xcl -macro_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = E$:\workspace\stm32\morion_test\morion_test_iar\main.c -o E$:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M0+ -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\ -I E$:\workspace\stm32\morion_test\morion_test_iar\inc\ -On --predef_macros E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.tmp
+  rspfile_name = E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.xcl.rsp
+
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.xcl : COMPILER_XCL 
+  xclcommand = -source_file E$:\workspace\stm32\morion_test\morion_test_iar\setup_mcu.c -xcl_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.xcl -macro_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = E$:\workspace\stm32\morion_test\morion_test_iar\setup_mcu.c -o E$:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M0+ -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\ -I E$:\workspace\stm32\morion_test\morion_test_iar\inc\ -On --predef_macros E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.tmp
+  rspfile_name = E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.xcl.rsp
+
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.pbi : INDEXER E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.xcl |  $
+E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\system_stm32l0xx.c
+  flags = -out=E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.pbi -f E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.xcl
+
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.pbi : INDEXER E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.xcl |  $
+E$:\workspace\stm32\morion_test\morion_test_iar\main.c
+  flags = -out=E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.pbi -f E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.xcl
+
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.pbi : INDEXER E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.xcl |  $
+E$:\workspace\stm32\morion_test\morion_test_iar\setup_mcu.c
+  flags = -out=E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.pbi -f E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.xcl
+
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbw : MAKEBROWSE E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd
+  flags = E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd -output E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbw
+
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd : PDBLINK E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.pbi |  $
+E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.pbi $
+E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.pbi
+  flags = -M E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\system_stm32l0xx.pbi E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\main.pbi E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\setup_mcu.pbi
+

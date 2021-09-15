@@ -1,0 +1,200 @@
+###############################################################################
+#
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  15/Sep/2021  23:39:38
+# Copyright 2007-2021 IAR Systems AB.
+#
+#    Output file  =
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\Exe\morion_test.out
+#    Map file     =
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\List\morion_test.map
+#    Command line =
+#        -f
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\Exe\morion_test.out.rsp
+#        (E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\main.o
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\setup_mcu.o
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\CMSIS\startup_stm32l011xx.o
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\CMSIS\system_stm32l0xx.o
+#        --no_out_extension -o
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\Exe\morion_test.out
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
+#        --map
+#        E:\workspace\stm32\morion_test\morion_test_iar\Debug\List\morion_test.map
+#        --config
+#        E:\workspace\stm32\morion_test\morion_test_iar\CMSIS\stm32l011xx_flash.icf
+#        --semihosting --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x800'3fff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block HEAP with size = 512, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'07ff] {
+          rw, block CSTACK, block HEAP };
+
+No sections matched the following patterns:
+
+  rw  in "P2"
+
+
+  Section   Kind         Address   Size  Object
+  -------   ----         -------   ----  ------
+"A0":                              0xc0
+  .intvec   ro code   0x800'0000   0xc0  startup_stm32l011xx.o [2]
+                    - 0x800'00c0   0xc0
+
+"P1":                              0xde
+  .text     ro code   0x800'00c0   0x3c  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'00fc   0x1e  cmain.o [4]
+  .text     ro code   0x800'011a    0x4  low_level_init.o [3]
+  .text     ro code   0x800'011e    0x8  main.o [1]
+  .text     ro code   0x800'0126    0x8  exit.o [3]
+  .text     ro code   0x800'012e    0x2  setup_mcu.o [1]
+  .text     ro code   0x800'0130    0xa  cexit.o [4]
+  .text     ro code   0x800'013a    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'013c   0x14  exit.o [5]
+  .text     ro code   0x800'0150   0x1c  cstartup_M.o [4]
+  .text     ro code   0x800'016c    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'016e    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0170    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0172    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0174    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0176    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0178    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'017a    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'017c    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'017e    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0180    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0182    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0184    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0186    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0188    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'018a    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'018c    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'018e    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0190    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0192    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0194    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0196    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'0198    0x2  startup_stm32l011xx.o [2]
+  .text     ro code   0x800'019c    0x2  system_stm32l0xx.o [2]
+                    - 0x800'019e   0xde
+
+"P2":                             0x400
+  CSTACK             0x2000'0000  0x400  <Block>
+    CSTACK  uninit   0x2000'0000  0x400  <Block tail>
+                   - 0x2000'0400  0x400
+
+Unused ranges:
+
+         From           To    Size
+         ----           --    ----
+   0x800'019e   0x800'3fff  0x3e62
+  0x2000'0400  0x2000'07ff   0x400
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                 ro code  rw data
+    ------                 -------  -------
+command line/config:
+    ---------------------------------------
+    Total:
+
+E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj: [1]
+    main.o                       8
+    setup_mcu.o                  2
+    ---------------------------------------
+    Total:                      10
+
+E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\CMSIS: [2]
+    startup_stm32l011xx.o      300
+    system_stm32l0xx.o           2
+    ---------------------------------------
+    Total:                     302
+
+dl6M_tln.a: [3]
+    exit.o                       8
+    low_level_init.o             4
+    ---------------------------------------
+    Total:                      12
+
+rt6M_tl.a: [4]
+    cexit.o                     10
+    cmain.o                     30
+    cstartup_M.o                28
+    ---------------------------------------
+    Total:                      68
+
+shb_l.a: [5]
+    exit.o                      20
+    ---------------------------------------
+    Total:                      20
+
+    Gaps                         2
+    Linker created                    1'024
+-------------------------------------------
+    Grand Total:               414    1'024
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                     Address  Size  Type      Object
+-----                     -------  ----  ----      ------
+?main                  0x800'00fd        Code  Gb  cmain.o [4]
+CSTACK$$Base          0x2000'0000         --   Gb  - Linker created -
+CSTACK$$Limit         0x2000'0400         --   Gb  - Linker created -
+Region$$Table$$Base           0x0         --   Gb  - Linker created -
+Region$$Table$$Limit          0x0         --   Gb  - Linker created -
+Setup_mcu              0x800'012f   0x2  Code  Gb  setup_mcu.o [1]
+SystemInit             0x800'019d   0x2  Code  Gb  system_stm32l0xx.o [2]
+__cmain                0x800'00fd        Code  Gb  cmain.o [4]
+__exit                 0x800'013d  0x14  Code  Gb  exit.o [5]
+__iar_program_start    0x800'0151        Code  Gb  cstartup_M.o [4]
+__low_level_init       0x800'011b   0x4  Code  Gb  low_level_init.o [3]
+__vector_table         0x800'0000        Data  Gb  startup_stm32l011xx.o [2]
+_call_main             0x800'0109        Code  Gb  cmain.o [4]
+_exit                  0x800'0131        Code  Gb  cexit.o [4]
+exit                   0x800'0127   0x8  Code  Gb  exit.o [3]
+main                   0x800'011f   0x8  Code  Gb  main.o [1]
+
+
+[1] = E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj
+[2] = E:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\CMSIS
+[3] = dl6M_tln.a
+[4] = rt6M_tl.a
+[5] = shb_l.a
+
+    414 bytes of readonly  code memory
+  1'024 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

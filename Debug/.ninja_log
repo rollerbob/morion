@@ -1,0 +1,27 @@
+# ninja log v5
+0	157	6534329921715854	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/main.o	26fde1df06e5ea62
+159	210	6534329922315986	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.out	325d980373e8caf9
+214	226	6534329922506023	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.hex	9a20c13643c6aa27
+0	25	6534332457900896	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/CMSIS/startup_stm32l011xx.o	840661b1202e0d5d
+0	161	6534332957409664	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/CMSIS/system_stm32l0xx.o	eeb66a4f81952a89
+165	208	6534332957969806	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.out	8e3a9ae36b46086d
+213	219	6534332958089835	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.hex	9a20c13643c6aa27
+1	78	6534334575786632	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/main.o	26fde1df06e5ea62
+81	128	6534334576306746	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.out	8e3a9ae36b46086d
+133	147	6534334576526794	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.hex	9a20c13643c6aa27
+0	84	6534335532982796	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/main.o	26fde1df06e5ea62
+86	125	6534335533402892	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.out	8e3a9ae36b46086d
+129	135	6534335533542920	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.hex	9a20c13643c6aa27
+0	169	6534342924670878	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/main.o	a7fbff1d1f933b13
+0	24	6534343128852268	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/CMSIS/startup_stm32l011xx.o	840661b1202e0d5d
+9	87	6534343129412397	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/main.o	a7fbff1d1f933b13
+4	98	6534343129532446	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/CMSIS/system_stm32l0xx.o	f2bb31ecda83ecf7
+0	45	6534343662738498	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/setup_mcu.o	cd9cf8e75c68109f
+48	90	6534343663178628	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.out	19adf550afb7c0ff
+95	109	6534343663418698	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.hex	9a20c13643c6aa27
+1	18	6534343779479466	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/CMSIS/startup_stm32l011xx.o	840661b1202e0d5d
+13	64	6534343779960941	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/setup_mcu.o	cd9cf8e75c68109f
+10	96	6534343780281015	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/main.o	a7fbff1d1f933b13
+5	107	6534343780361035	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Obj/CMSIS/system_stm32l0xx.o	f2bb31ecda83ecf7
+110	153	6534343780841210	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.out	19adf550afb7c0ff
+158	164	6534343781001211	E:/workspace/stm32/morion_test/morion_test_iar/Debug/Exe/morion_test.hex	9a20c13643c6aa27
