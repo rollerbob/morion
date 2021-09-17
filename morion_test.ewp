@@ -335,8 +335,8 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>$PROJ_DIR$\CMSIS</state>
-                    <state>$PROJ_DIR$\inc</state>
+                    <state>$PROJ_DIR$\core\inc</state>
+                    <state>$PROJ_DIR$\CMSIS\inc</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -745,7 +745,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$PROJ_DIR$\CMSIS\stm32l011xx_flash.icf</state>
+                    <state>$PROJ_DIR$\startup\stm32l011xx_flash.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -2098,41 +2098,59 @@
     </configuration>
     <group>
         <name>CMSIS</name>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\cmsis_compiler.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\cmsis_iccarm.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\cmsis_version.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\core_cm0plus.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\startup_stm32l011xx.s</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\stm32l011xx.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\stm32l0xx.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\system_stm32l0xx.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\CMSIS\system_stm32l0xx.h</name>
-        </file>
+        <group>
+            <name>inc</name>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\inc\cmsis_compiler.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\inc\cmsis_iccarm.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\inc\cmsis_version.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\inc\core_cm0plus.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\inc\stm32l011xx.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\inc\stm32l0xx.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\inc\system_stm32l0xx.h</name>
+            </file>
+        </group>
+        <group>
+            <name>src</name>
+            <file>
+                <name>$PROJ_DIR$\CMSIS\src\system_stm32l0xx.c</name>
+            </file>
+        </group>
     </group>
     <group>
-        <name>Include</name>
+        <name>core</name>
+        <group>
+            <name>inc</name>
+            <file>
+                <name>$PROJ_DIR$\core\inc\defines.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\core\inc\main.h</name>
+            </file>
+        </group>
+        <group>
+            <name>src</name>
+            <file>
+                <name>$PROJ_DIR$\core\src\main.c</name>
+            </file>
+        </group>
     </group>
-    <file>
-        <name>$PROJ_DIR$\main.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\setup_mcu.c</name>
-    </file>
+    <group>
+        <name>Startup</name>
+        <file>
+            <name>$PROJ_DIR$\startup\startup_stm32l011xx.s</name>
+        </file>
+    </group>
 </project>
