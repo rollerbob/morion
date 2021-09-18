@@ -2880,11 +2880,17 @@
                 <name>$PROJ_DIR$\core\inc\defines.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\core\inc\led_control.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\core\inc\main.h</name>
             </file>
         </group>
         <group>
             <name>src</name>
+            <file>
+                <name>$PROJ_DIR$\core\inc\led_control.c</name>
+            </file>
             <file>
                 <name>$PROJ_DIR$\core\src\main.c</name>
             </file>

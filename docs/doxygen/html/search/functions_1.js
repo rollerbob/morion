@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['setup_5fmcu_0',['Setup_MCU',['../main_8c.html#a5f9451bbe05886ab0610b7fee4587871',1,'main.c']]],
-  ['systick_5fhandler_1',['SysTick_Handler',['../main_8c.html#ab5e09814056d617c521549e542639b7e',1,'main.c']]]
+  ['main_0',['main',['../main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667',1,'main.c']]]
 ];

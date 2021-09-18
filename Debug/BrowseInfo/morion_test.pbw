@@ -79661,16 +79661,538 @@
     "scope": null
   },
   {
-    "ID": "c:@systick",
+    "ID": "c:defines.h@27@macro@DEFINES_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DEFINES_H",
+    "location": {
+      "column": "9",
+      "line": "2",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\defines.h"
+    },
+    "name": "DEFINES_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:defines.h@74@macro@UART_BAUDRATE",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "UART_BAUDRATE",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\defines.h"
+    },
+    "name": "UART_BAUDRATE",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.h@276@macro@LED_CONTROL_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "LED_CONTROL_H",
+    "location": {
+      "column": "9",
+      "line": "7",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "LED_CONTROL_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.h@325@macro@LED_FULL_DUTY",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "LED_FULL_DUTY",
+    "location": {
+      "column": "9",
+      "line": "11",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "LED_FULL_DUTY",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.h@459@macro@LED_ZERO_DUTY",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "LED_ZERO_DUTY",
+    "location": {
+      "column": "9",
+      "line": "12",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "LED_ZERO_DUTY",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@EA@Led_mode_e",
+    "What": "Enum",
+    "defdec": "Def",
+    "display": "",
+    "fields": [
+      {
+        "ID": "c:@EA@Led_mode_e@LED_BLINK",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "LED_BLINK",
+        "location": {
+          "column": "5",
+          "line": "19",
+          "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+        },
+        "name": "LED_BLINK",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Led_mode_e@LED_FADE",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "LED_FADE",
+        "location": {
+          "column": "5",
+          "line": "20",
+          "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+        },
+        "name": "LED_FADE",
+        "origin": "user_include",
+        "scope": null
+      }
+    ],
+    "location": {
+      "column": "9",
+      "line": "17",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@T@Led_mode_e",
+    "What": "Typedef",
+    "defdec": "Def",
+    "display": "enum Led_mode_e",
+    "location": {
+      "column": "3",
+      "line": "21",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_mode_e",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@EA@Fade_mode_e",
+    "What": "Enum",
+    "defdec": "Def",
+    "display": "",
+    "fields": [
+      {
+        "ID": "c:@EA@Fade_mode_e@FADE_ON",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "FADE_ON",
+        "location": {
+          "column": "5",
+          "line": "28",
+          "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+        },
+        "name": "FADE_ON",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Fade_mode_e@FADE_OFF",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "FADE_OFF",
+        "location": {
+          "column": "5",
+          "line": "29",
+          "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+        },
+        "name": "FADE_OFF",
+        "origin": "user_include",
+        "scope": null
+      }
+    ],
+    "location": {
+      "column": "9",
+      "line": "26",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@T@Fade_mode_e",
+    "What": "Typedef",
+    "defdec": "Def",
+    "display": "enum Fade_mode_e",
+    "location": {
+      "column": "3",
+      "line": "30",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Fade_mode_e",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_init",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_init(void)",
+    "location": {
+      "column": "6",
+      "line": "32",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_init",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_init",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_init(void)",
+    "location": {
+      "column": "6",
+      "line": "32",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_init",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_update",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_update(void)",
+    "location": {
+      "column": "6",
+      "line": "33",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_update",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_update",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_update(void)",
+    "location": {
+      "column": "6",
+      "line": "33",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_update",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_mode",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_set_mode(Led_mode_e)",
+    "location": {
+      "column": "6",
+      "line": "34",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_set_mode",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_mode",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_set_mode(Led_mode_e)",
+    "location": {
+      "column": "6",
+      "line": "34",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_set_mode",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_fade",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_set_fade(Fade_mode_e, uint32_t)",
+    "location": {
+      "column": "6",
+      "line": "35",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_set_fade",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_fade",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_set_fade(Fade_mode_e, uint32_t)",
+    "location": {
+      "column": "6",
+      "line": "35",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_set_fade",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_blink",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_set_blink(uint32_t, uint32_t)",
+    "location": {
+      "column": "6",
+      "line": "36",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_set_blink",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_blink",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Led_set_blink(uint32_t, uint32_t)",
+    "location": {
+      "column": "6",
+      "line": "36",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.h"
+    },
+    "name": "Led_set_blink",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_systick",
     "What": "Variable",
     "defdec": "Dec",
-    "display": "systick",
+    "display": "_systick",
+    "location": {
+      "column": "26",
+      "line": "10",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_systick",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_last_systick",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "_last_systick",
+    "location": {
+      "column": "17",
+      "line": "13",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_last_systick",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_led_mode",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "_led_mode",
     "location": {
       "column": "19",
-      "line": "6",
-      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\src\\main.c"
+      "line": "16",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
     },
-    "name": "systick",
+    "name": "_led_mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_fade_mode",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "_fade_mode",
+    "location": {
+      "column": "20",
+      "line": "19",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_fade_mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_led_on",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "_led_on",
+    "location": {
+      "column": "17",
+      "line": "22",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_led_on",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_led_off",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "_led_off",
+    "location": {
+      "column": "17",
+      "line": "25",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_led_off",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_duty",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "_duty",
+    "location": {
+      "column": "14",
+      "line": "28",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_duty",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@_duty_step",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "_duty_step",
+    "location": {
+      "column": "14",
+      "line": "31",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_duty_step",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_init",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Led_init(void)",
+    "location": {
+      "column": "6",
+      "line": "39",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "Led_init",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_update",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Led_update(void)",
+    "location": {
+      "column": "6",
+      "line": "55",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "Led_update",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:led_control.c@2616@F@Led_update@_now_systick",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "_now_systick",
+    "location": {
+      "column": "14",
+      "line": "59",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "_now_systick",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_mode",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Led_set_mode(Led_mode_e)",
+    "location": {
+      "column": "6",
+      "line": "127",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "Led_set_mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_fade",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Led_set_fade(Fade_mode_e, uint32_t)",
+    "location": {
+      "column": "6",
+      "line": "139",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "Led_set_fade",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Led_set_blink",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Led_set_blink(uint32_t, uint32_t)",
+    "location": {
+      "column": "6",
+      "line": "162",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "Led_set_blink",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SysTick_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void SysTick_Handler(void)",
+    "location": {
+      "column": "6",
+      "line": "173",
+      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\inc\\led_control.c"
+    },
+    "name": "SysTick_Handler",
     "origin": "project_file",
     "scope": null
   },
@@ -79681,7 +80203,7 @@
     "display": "void Setup_MCU(void)",
     "location": {
       "column": "6",
-      "line": "13",
+      "line": "10",
       "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\src\\main.c"
     },
     "name": "Setup_MCU",
@@ -79695,24 +80217,10 @@
     "display": "void main(void)",
     "location": {
       "column": "6",
-      "line": "74",
+      "line": "92",
       "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\src\\main.c"
     },
     "name": "main",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SysTick_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void SysTick_Handler(void)",
-    "location": {
-      "column": "6",
-      "line": "100",
-      "path": "E:\\workspace\\stm32\\morion_test\\morion_test_iar\\core\\src\\main.c"
-    },
-    "name": "SysTick_Handler",
     "origin": "project_file",
     "scope": null
   },

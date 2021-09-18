@@ -48,17 +48,17 @@
     <StLinkDriver>
         <stlinkserialNo>0672FF555054877567085718</stlinkserialNo>
         <stlinkfoundProbes />
-        <stlinkResetStyle>4</stlinkResetStyle>
-        <stlinkResetStrategy>0</stlinkResetStrategy>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <CStepIntDis>_ 0</CStepIntDis>
+        <stlinkResetStyle>4</stlinkResetStyle>
+        <stlinkResetStrategy>0</stlinkResetStrategy>
     </StLinkDriver>
     <PlDriver>
         <FirstRun>0</FirstRun>
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\CONFIG\debugger\ST\STM32L011K4.ddf</MemConfigValue>
     </PlDriver>
     <DebugChecksum>
-        <Checksum>3898357297</Checksum>
+        <Checksum>1734498643</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>

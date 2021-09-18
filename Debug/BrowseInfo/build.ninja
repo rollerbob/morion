@@ -29,6 +29,11 @@ build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src
   flags = E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\src\system_stm32l0xx.c -o E$:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\CMSIS\src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M0+ -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I E$:\workspace\stm32\morion_test\morion_test_iar\core\inc\ -I E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\inc\ -On --predef_macros E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src\system_stm32l0xx.tmp
   rspfile_name = E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src\system_stm32l0xx.xcl.rsp
 
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.xcl : COMPILER_XCL 
+  xclcommand = -source_file E$:\workspace\stm32\morion_test\morion_test_iar\core\inc\led_control.c -xcl_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.xcl -macro_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = E$:\workspace\stm32\morion_test\morion_test_iar\core\inc\led_control.c -o E$:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\core\src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M0+ -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I E$:\workspace\stm32\morion_test\morion_test_iar\core\inc\ -I E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\inc\ -On --predef_macros E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.tmp
+  rspfile_name = E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.xcl.rsp
+
 build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.xcl : COMPILER_XCL 
   xclcommand = -source_file E$:\workspace\stm32\morion_test\morion_test_iar\core\src\main.c -xcl_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.xcl -macro_file E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
   flags = E$:\workspace\stm32\morion_test\morion_test_iar\core\src\main.c -o E$:\workspace\stm32\morion_test\morion_test_iar\Debug\Obj\core\src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M0+ -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I E$:\workspace\stm32\morion_test\morion_test_iar\core\inc\ -I E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\inc\ -On --predef_macros E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.tmp
@@ -38,6 +43,10 @@ build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src
 E$:\workspace\stm32\morion_test\morion_test_iar\CMSIS\src\system_stm32l0xx.c
   flags = -out=E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src\system_stm32l0xx.pbi -f E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src\system_stm32l0xx.xcl
 
+build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.pbi : INDEXER E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.xcl |  $
+E$:\workspace\stm32\morion_test\morion_test_iar\core\inc\led_control.c
+  flags = -out=E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.pbi -f E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.xcl
+
 build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.pbi : INDEXER E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.xcl |  $
 E$:\workspace\stm32\morion_test\morion_test_iar\core\src\main.c
   flags = -out=E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.pbi -f E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.xcl
@@ -46,6 +55,7 @@ build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_te
   flags = E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd -output E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbw
 
 build E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd : PDBLINK E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src\system_stm32l0xx.pbi |  $
+E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.pbi $
 E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.pbi
-  flags = -M E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src\system_stm32l0xx.pbi E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.pbi
+  flags = -M E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\morion_test.pbd E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\CMSIS\src\system_stm32l0xx.pbi E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\led_control.pbi E$:\workspace\stm32\morion_test\morion_test_iar\Debug\BrowseInfo\core\src\main.pbi
 

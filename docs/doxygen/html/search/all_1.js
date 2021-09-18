@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667',1,'main.c']]],
-  ['main_2ec_1',['main.c',['../main_8c.html',1,'']]],
-  ['main_2eh_2',['main.h',['../main_8h.html',1,'']]]
+  ['fade_5fmode_5fe_0',['Fade_mode_e',['../led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10',1,'led_control.h']]],
+  ['fade_5foff_1',['FADE_OFF',['../led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10abdeeecd6b258c66d7e6e1551f3ec9054',1,'led_control.h']]],
+  ['fade_5fon_2',['FADE_ON',['../led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10a539d6f5841aed5e74d50852de33d9663',1,'led_control.h']]]
 ];

@@ -1,9 +1,6 @@
-#include "stm32l0xx.h"
+#include "defines.h"
 #include "main.h"
-
-// ====== Переменные ===========================================================
-//! Переменная уменьшается каждое системное прерывание
-volatile uint32_t systick;
+#include "led_control.h"
 
 /**
     @brief Инициализация микроконтроллера
@@ -12,9 +9,6 @@ volatile uint32_t systick;
 */
 void Setup_MCU(void)
 {
-	// ====== Инцициализация переменных ========================================
-	systick = 0;
-
 	// ====== Настройка тактирования ===========================================
 	// Тактирование от внутреннего генератора
 	RCC->CR |= RCC_CR_HSION;								// 16 MHz
@@ -59,8 +53,33 @@ void Setup_MCU(void)
     SysTick_Config(SystemCoreClock / 1000);
 
     // Настройка timer2 на выход PWM на пине 3 порта B. 26-я нога
+    // Подключаю тактирование к GPIOB
+    RCC->IOPENR |= RCC_IOPENR_GPIOBEN;
+
+    // Конфигурирую пин 3 порта B в alternative_mode
+    GPIOB->MODER &= ~GPIO_MODER_MODE3_0;
+
+    // Выбираю как альтернативную функцию выход второго канала второго таймера
+    GPIOB->AFR[0] |= 0x0002000;                             // AF2
+
     // Подключаю тактирование к timer2
     RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
+
+    // Настройка прескаллера
+    TIM2->PSC = 3200;
+    TIM2->ARR = 100;
+    
+    // Коэффицициент заполнения по умолчанию [0:100]
+    TIM2->CCR2 = 0;
+
+    // Режим работы выходного канала PWM - выравнивание по фронту
+    TIM2->CCMR1 |= 0x6000;
+
+    // Включаю выход второго канала второго таймера
+    TIM2->CCER |= TIM_CCER_CC2E;
+
+    // Запускаю счётчик
+    TIM2->CR1 |= TIM_CR1_CEN;
 
     
     
@@ -73,32 +92,14 @@ void Setup_MCU(void)
 void main(void)
 {
 	Setup_MCU();
-
-
+    Led_init();
+    Led_set_mode(LED_FADE);
+    Led_set_fade(FADE_OFF, 5000);
 
 	while(1)
 	{
-		systick = 500;
-        while(systick)
-        {
-            ;
-        }
-        GPIOB->BSRR |= GPIO_BSRR_BS_3;
-        systick = 500;
-        while(systick)
-        {
-            ;
-        }
-        GPIOB->BSRR |= GPIO_BSRR_BR_3;
+        Led_update();
 	}
-}
-
-/**
-    @brief Обработчик прерывания SysTic
-*/
-void SysTick_Handler(void)
-{
-	systick--;
 }
 
 
