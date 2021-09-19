@@ -2142,14 +2142,20 @@
             <file>
                 <name>$PROJ_DIR$\core\inc\main.h</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\core\inc\uart_control.h</name>
+            </file>
         </group>
         <group>
             <name>src</name>
             <file>
-                <name>$PROJ_DIR$\core\inc\led_control.c</name>
+                <name>$PROJ_DIR$\core\src\led_control.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\core\src\main.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\core\src\uart_control.c</name>
             </file>
         </group>
     </group>

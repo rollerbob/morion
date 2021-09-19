@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>5</fileVersion>
-    <fileChecksum>2673335964</fileChecksum>
+    <fileChecksum>1437731623</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\core\inc\led_control.h</file>
-            <file>$PROJ_DIR$\core\inc\main.h</file>
-            <file>$PROJ_DIR$\core\inc\defines.h</file>
+            <file>$PROJ_DIR$\CMSIS\inc\cmsis_version.h</file>
+            <file>$PROJ_DIR$\CMSIS\inc\stm32l011xx.h</file>
+            <file>$PROJ_DIR$\CMSIS\inc\stm32l0xx.h</file>
+            <file>$PROJ_DIR$\CMSIS\inc\cmsis_compiler.h</file>
+            <file>$PROJ_DIR$\CMSIS\inc\cmsis_iccarm.h</file>
+            <file>$PROJ_DIR$\CMSIS\inc\core_cm0plus.h</file>
             <file>$PROJ_DIR$\core\src\main.c</file>
-            <file>$PROJ_DIR$\core\inc\led_control.c</file>
+            <file>$PROJ_DIR$\core\inc\uart_control.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\CMSIS\src\system_stm32l0xx.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\core\src\uart_control.o</file>
+            <file>$PROJ_DIR$\core\src\led_control.c</file>
+            <file>$PROJ_DIR$\core\inc\defines.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\core\src\led_control.o</file>
+            <file>$PROJ_DIR$\core\inc\main.h</file>
+            <file>$PROJ_DIR$\CMSIS\inc\system_stm32l0xx.h</file>
+            <file>$PROJ_DIR$\startup\startup_stm32l011xx.s</file>
+            <file>$PROJ_DIR$\core\src\uart_control.c</file>
+            <file>$PROJ_DIR$\CMSIS\src\system_stm32l0xx.c</file>
+            <file>$PROJ_DIR$\core\inc\led_control.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\core\src\main.o</file>
         </outputs>
+        <file>
+            <name>$PROJ_DIR$\core\src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 19</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\core\src\led_control.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\core\src\uart_control.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 9</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\CMSIS\src\system_stm32l0xx.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 8</file>
+                </tool>
+            </outputs>
+        </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>
         </forcedrebuild>

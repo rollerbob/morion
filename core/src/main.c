@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "main.h"
 #include "led_control.h"
+#include "uart_control.h"
 
 /**
     @brief Инициализация микроконтроллера
@@ -52,16 +53,26 @@ void Setup_MCU(void)
     // Настраиваю системные прерывания 1000 раз в секунду
     SysTick_Config(SystemCoreClock / 1000);
 
-    // Настройка timer2 на выход PWM на пине 3 порта B. 26-я нога
-    // Подключаю тактирование к GPIOB
-    RCC->IOPENR |= RCC_IOPENR_GPIOBEN;
+    // ====== Настройка GPIO ===================================================
+    // Подключаю тактирование к GPIOB и GPIOA
+    RCC->IOPENR |= RCC_IOPENR_GPIOBEN | RCC_IOPENR_GPIOAEN;
 
     // Конфигурирую пин 3 порта B в alternative_mode
     GPIOB->MODER &= ~GPIO_MODER_MODE3_0;
 
     // Выбираю как альтернативную функцию выход второго канала второго таймера
-    GPIOB->AFR[0] |= 0x0002000;                             // AF2
+    GPIOB->AFR[0] |= 0x0002000;         // AF2
 
+    // Конфигурирую пины 2 и 15 порта A в alternative_mode
+    GPIOA->MODER &= ~(GPIO_MODER_MODE2_0 | GPIO_MODER_MODE15_0);
+    
+    // Пин 2 порта A - USART2-TX
+    GPIOA->AFR[0] |= 0x00000400;        //AF4
+    
+    // Пин 15 порта A - USART2-RX
+    GPIOA->AFR[1] |= 0x40000000;        //AF4
+
+    // ====== Настройка TIMER2 для работы с PWM ================================
     // Подключаю тактирование к timer2
     RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
 
@@ -81,8 +92,23 @@ void Setup_MCU(void)
     // Запускаю счётчик
     TIM2->CR1 |= TIM_CR1_CEN;
 
+    // ====== Настройка USART2 =================================================
+    // Подлючаю тактирование к USART2
+    RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
+
+    // Установка BAUDRATE
+    USART2->BRR = F_CPU / USART_BAUDRATE;
     
+    // На всякий случай отключаю USART на время конфигурации
+    USART2->CR1 &= ~(USART_CR1_UE);
     
+    // По дефолту настроены 8 bit, 1 stop bit, parity control disable
+    // Остаётся включить приёмник и разрешить прерывания
+    USART2->CR1 |= USART_CR1_RXNEIE | USART_CR1_RE;
+    // Включаю USART
+    USART2->CR1 |= USART_CR1_UE;
+    
+    NVIC_EnableIRQ(USART2_IRQn);
 
 }
 
@@ -93,8 +119,9 @@ void main(void)
 {
 	Setup_MCU();
     Led_init();
-    Led_set_mode(LED_FADE);
-    Led_set_fade(FADE_OFF, 5000);
+    Uart_init();
+    char str[] = "Hello, world!";
+    Uart_put_str (str);
 
 	while(1)
 	{
