@@ -155,6 +155,7 @@ int main(void)
  	while(1)
 	{
         Led_update();
+        Uart_update();
 	}
 
     return 0;
