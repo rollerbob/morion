@@ -1,53 +1,48 @@
 #include "uart_control.h"
 
-volatile static char _in_buff[USART_BUFF_SIZE];
-volatile static char _out_buff[USART_BUFF_SIZE];
-
-volatile static uint32_t _in_buff_head, _in_buff_tail;
-volatile static uint32_t _out_buff_tail;
-uint32_t static _out_buff_head;
+volatile static uint8_t _in_buff[USART_BUFF_SIZE];
+volatile static uint32_t _in_head;
+volatile static uint32_t _in_tail;
+volatile static uint32_t _msg_rcvd;
 
 void Uart_init(void)
 {
-    _in_buff_head = 0;
-    _in_buff_tail = 0;
-
-    _out_buff_head = 0;
-    _out_buff_tail = 0;
-
-    for (uint32_t i = 0; i < USART_BUFF_SIZE; i++)
-    {
-        _in_buff[i] = 0;
-        _out_buff[i] = 0;
-    }
+    _in_head = 0;
+    _in_tail = 0;
+    _msg_rcvd = 0;
 }
 
-void Uart_put_str(char *str)
+void Uart_send_str_DMA(char *str, uint32_t size)
 {
-    while(*str)
-    {
-        _out_buff[_out_buff_head] = *str;
-        _out_buff_head++;
-        _out_buff_head &= USART_BUFF_MSK;
-        str++;
-    }
-    USART2->CR1 |= USART_CR1_TE | USART_CR1_TXEIE;
+    // Отключаю DMA
+    DMA1_Channel4->CCR &= ~(DMA_CCR_EN);
+    // Записываю в источник DMA начало строки
+    DMA1_Channel4->CMAR = (uint32_t)str;
+    DMA1_Channel4->CNDTR = size;
+    // USART2->ICR &= ~(USART_ICR_TCCF);
+    DMA1_Channel4->CCR |= DMA_CCR_EN;
 }
 
 void USART2_IRQHandler(void)
 {
     volatile uint32_t isr = USART2->ISR;
 
-    // Если выходной регистр пуст.
-    if (isr & USART_ISR_TXE)
+    // Если сработало прерывание по заполнению входного регистра
+    if (isr & USART_ISR_RXNE)
     {
-        if (_out_buff_tail != _out_buff_head)
-        {
-            USART2->TDR = _out_buff[_out_buff_tail++];
-            _out_buff_tail &= USART_BUFF_MSK;
-        } else
-        {
-            USART2->CR1 &= ~(USART_CR1_TE | USART_CR1_TXEIE);
-        }
+        uint8_t in = (uint8_t)(USART2->RDR);
+        if (in == 0x0D)
+            _msg_rcvd = 1;
+        _in_buff[_in_head] = in;
+        _in_head++;
+        _in_head &= USART_BUFF_MSK;
     }
+}
+
+void DMA1_Channel4_5_6_7_IRQHandler (void)
+{
+    if (DMA1->ISR & DMA_ISR_TCIF4)
+        DMA1->IFCR |= DMA_IFCR_CTCIF4;
+    // if (DMA1->IFSR & DMA_ISR_TCIF4)
+    //     DMA1->IFCR |= DMA_ISR_TCIF4;//очистить флаг окончания обмена.
 }

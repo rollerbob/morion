@@ -3,6 +3,9 @@
 #include "led_control.h"
 #include "uart_control.h"
 
+// ====== Глобальные перменные =================================================
+char hello_str[] = "LED control panel.\nEnter command or 'h' for help.\n";
+
 /**
     @brief Инициализация микроконтроллера
 
@@ -14,24 +17,27 @@ void Setup_MCU(void)
 	// Тактирование от внутреннего генератора
 	RCC->CR |= RCC_CR_HSION;								// 16 MHz
 
-	// Жду когда заведётся генератор
+	// Жду когда заведётся генератор. В документации этот бит обозначен как
+    // RCC_CR_HSI16RDYF, а в файле stm32l011xx.h из стандартного репозитория
+    // этот бит обозначен как RCC_CR_HSIRDY. И тот и другой разворачиваются в
+    // (1 << 2).
 	while (!(READ_BIT(RCC->CR, RCC_CR_HSIRDY)))
 	{
 		;
 	}
-    
+
 	// Устанавливаю делитель и множитель PLL
 	RCC->CFGR |= RCC_CFGR_PLLMUL4 | RCC_CFGR_PLLDIV2;		// 16 * 4 / 2 = 32 MHz
-  
+
     // Включаю PLL
     RCC->CR |= RCC_CR_PLLON;
-    
+
     // Жду пока заведётся PLL
     while (!(READ_BIT(RCC->CR, RCC_CR_PLLRDY)))
     {
         ;
     }
-    
+
     // Установка задержки доступа к NVM
 	FLASH->ACR |= FLASH_ACR_LATENCY;						// 1 цикл
 
@@ -45,7 +51,7 @@ void Setup_MCU(void)
     }
 
     // Выключаю MSI
-    RCC->CR &=~ RCC_CR_MSION;
+    RCC->CR &= ~(RCC_CR_MSION);
 
     // Обновляю переменную SystemCoreClock
     SystemCoreClockUpdate();
@@ -65,10 +71,10 @@ void Setup_MCU(void)
 
     // Конфигурирую пины 2 и 15 порта A в alternative_mode
     GPIOA->MODER &= ~(GPIO_MODER_MODE2_0 | GPIO_MODER_MODE15_0);
-    
+
     // Пин 2 порта A - USART2-TX
     GPIOA->AFR[0] |= 0x00000400;        //AF4
-    
+
     // Пин 15 порта A - USART2-RX
     GPIOA->AFR[1] |= 0x40000000;        //AF4
 
@@ -79,12 +85,12 @@ void Setup_MCU(void)
     // Настройка прескаллера
     TIM2->PSC = 3200;
     TIM2->ARR = 100;
-    
+
     // Коэффицициент заполнения по умолчанию [0:100]
     TIM2->CCR2 = 0;
 
     // Режим работы выходного канала PWM - выравнивание по фронту
-    TIM2->CCMR1 |= 0x6000;
+    TIM2->CCMR1 |= (TIM_CCMR1_OC2M_1 | TIM_CCMR1_OC2M_2);
 
     // Включаю выход второго канала второго таймера
     TIM2->CCER |= TIM_CCER_CC2E;
@@ -93,40 +99,65 @@ void Setup_MCU(void)
     TIM2->CR1 |= TIM_CR1_CEN;
 
     // ====== Настройка USART2 =================================================
+    // Передача по USART производится через DMA, а приём в кольцевой буфер с
+    // контролем символа <CR>
+
     // Подлючаю тактирование к USART2
     RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
 
     // Установка BAUDRATE
     USART2->BRR = F_CPU / USART_BAUDRATE;
-    
+
     // На всякий случай отключаю USART на время конфигурации
     USART2->CR1 &= ~(USART_CR1_UE);
-    
+
     // По дефолту настроены 8 bit, 1 stop bit, parity control disable
-    // Остаётся включить приёмник и разрешить прерывания
-    USART2->CR1 |= USART_CR1_RXNEIE | USART_CR1_RE;
+    // Остаётся включить приёмник, передатчик  и разрешить прерывание
+    // приёмника.
+    USART2->CR1 |= USART_CR1_RXNEIE | USART_CR1_TE |USART_CR1_RE;
+
+    // Включение передачи через DMA
+    USART2->CR3 |= USART_CR3_DMAT;
+
     // Включаю USART
     USART2->CR1 |= USART_CR1_UE;
-    
+
     NVIC_EnableIRQ(USART2_IRQn);
 
+    // ====== Настройка DMA на передачу в USART2 ===============================
+    // Передача в USART2 - 4 канал DMA
+    // Включаю тактирование DMA
+    RCC->AHBENR |= RCC_AHBENR_DMAEN;
+
+    // К 4-му каналу DMA подключаю USART2_TX
+    DMA1_CSELR->CSELR |= 0x00004000;
+
+    // Установка источника mem->prph, автоинкремент источника, разрешение
+    // прерывания по окончанию передачи
+    DMA1_Channel4->CCR |= DMA_CCR_MINC | DMA_CCR_DIR | DMA_CCR_TCIE;
+
+    // Установка адреса приёма данных
+    DMA1_Channel4->CPAR = (uint32_t)&(USART2->TDR); // регистр передатчика  USART2
+
+    NVIC_EnableIRQ(DMA1_Channel4_5_IRQn);
 }
 
 /**
     @brief Точка входа в программу
 */
-void main(void)
+int main(void)
 {
 	Setup_MCU();
     Led_init();
     Uart_init();
-    char str[] = "Hello, world!";
-    Uart_put_str (str);
+    Uart_send_str_DMA(hello_str, sizeof(hello_str) - 1);
 
-	while(1)
+ 	while(1)
 	{
         Led_update();
 	}
+
+    return 0;
 }
 
 

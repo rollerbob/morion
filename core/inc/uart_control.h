@@ -7,6 +7,6 @@
 #define USART_BUFF_MSK (USART_BUFF_SIZE - 1)
 
 void Uart_init(void);
-void Uart_put_str(char *str);
+void Uart_send_str_DMA(char *str, uint32_t size);
 
 #endif
