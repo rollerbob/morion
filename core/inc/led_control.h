@@ -7,6 +7,7 @@
 #define LED_CONTROL_H
 
 #include "defines.h"
+#include "shared_types.h"
 
 #define LED_FULL_DUTY   100.0F //!< Макисмальный коэффициент заполнения ШИМ светодиода
 #define LED_ZERO_DUTY   0.0F   //!< Минимальный коэффициент заполнения ШИМ светодиода
@@ -16,23 +17,19 @@
 */
 typedef enum
 {
-    LED_BLINK,                 ///< режим мигания
-    LED_FADE                   ///< режим плавного изменения яркости
+    LED_BLINK,                          ///< режим мигания
+    LED_FADE_ON,                        ///< режим плавного розжига
+    LED_FADE_OFF                        ///< режим плавного затухания
 } Led_mode_e;
 
-/**
-    @brief Перечисление режимов плавного изменеия яркости свечения светодиода
-*/
-typedef enum
+typedef struct
 {
-    FADE_ON,                   ///< Плавное разгорание светодиода
-    FADE_OFF                   ///< Плавное затухание светодиода
-} Fade_mode_e;
+    Led_mode_e mode;                    ///< режим работы светодиода
+    uint32_t param0;                    ///< первый параметр (время включения, время розжига/время затухания)
+    uint32_t param1;                    ///< второй параметр
+} Led_t;
 
-void Led_init(void);
-void Led_update(void);
-void Led_set_mode(Led_mode_e mode);
-void Led_set_fade(Fade_mode_e mode, uint32_t time);
-void Led_set_blink(uint32_t led_on_time, uint32_t led_off_time);
+void Led_init(Led_t *led);
+void Led_update(Led_t *led);
 
 #endif

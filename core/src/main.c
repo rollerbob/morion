@@ -1,10 +1,19 @@
-#include "defines.h"
 #include "main.h"
 #include "led_control.h"
-#include "uart_control.h"
+#include "usart_control.h"
+
 
 // ====== Глобальные перменные =================================================
-char hello_str[] = "LED control panel.\nEnter command or 'h' for help.\n";
+// Светодиод
+Led_t led;
+
+// Принятая команда
+Rcvd_cmd_t cmd;
+
+// ====== Строки ===============================================================
+char hello_str[] = "LED control panel.\nEnter command or 'h' for help.\n>";
+char help_str[] = "\nHalp string!\nHalp me, please!\n>";
+char unknow_cmd_str[] = "\nUnknown command. Send 'h' to list all aviable commands.\n>";
 
 /**
     @brief Инициализация микроконтроллера
@@ -13,6 +22,15 @@ char hello_str[] = "LED control panel.\nEnter command or 'h' for help.\n";
 */
 void Setup_MCU(void)
 {
+    // ====== Инициализация переменных =========================================
+    cmd.cmd = NO_CMD;
+    cmd.param0 = 0;
+    cmd.param1 = 0;
+
+    led.mode = LED_BLINK;
+    led.param0 = 500;
+    led.param1 = 500;
+
 	// ====== Настройка тактирования ===========================================
 	// Тактирование от внутреннего генератора
 	RCC->CR |= RCC_CR_HSION;								// 16 MHz
@@ -148,14 +166,54 @@ void Setup_MCU(void)
 int main(void)
 {
 	Setup_MCU();
-    Led_init();
-    Uart_init();
-    Uart_send_str_DMA(hello_str, sizeof(hello_str) - 1);
+    Led_init(&led);
+    Usart_init();
+
+    Usart_send_str_DMA(hello_str, sizeof(hello_str) - 1);
 
  	while(1)
 	{
-        Led_update();
-        Uart_update();
+        Led_update(&led);
+        Usart_update();
+
+        switch(cmd.cmd)
+        {
+        case NO_CMD:
+            break;
+
+        case HELP_CMD:
+            Usart_send_str_DMA(help_str, sizeof(help_str) - 1);
+
+        case BLINK_CMD:
+            led.mode = LED_BLINK;
+            led.param0 = cmd.param0;
+            led.param1 = cmd.param1;
+            break;
+
+        case FADE_ON_CMD:
+            led.mode = LED_FADE_ON;
+            led.param0 = cmd.param0;
+            led.param1 = cmd.param1;
+            break;
+
+        case FADE_OFF_CMD:
+            led.mode = LED_FADE_OFF;
+            led.param0 = cmd.param0;
+            led.param1 = cmd.param1;
+            break;
+
+        case STOP_CMD:
+            break;
+
+        case ERROR_CMD:
+            Usart_send_str_DMA(unknow_cmd_str, sizeof(unknow_cmd_str) - 1);
+            break;
+
+        default:
+            break;
+        }
+
+        cmd.cmd = NO_CMD;
 	}
 
     return 0;
