@@ -1,8 +1,12 @@
-/*! ============================================================================
- *  @file led_control.c
- *  @brief Модуль работы со светодиодом.
- *
- *  Включает в себя инициализацию модуля, обновление, установку параметров.
+/**
+ * @file led_control.c
+ * @author Андрей Белов (gd.triebkraft@gmail.com)
+ * @brief Реализация функций работы со светодиодом.
+ * @version 0.1
+ * @date 2021-09-22
+ * 
+ * @copyright Copyright (c) 2021
+ * 
  */
 #include "led_control.h"
 
@@ -21,12 +25,6 @@ static float _duty_step;
 
 static Led_mode_e _last_led_mode;
 
-/*! ============================================================================
- * @brief Расчёт шага приращения/уменьшения коэфициента заполнения ШИМ.
- *
- * @param time uint32_t - время разгорания/затухания светодиода.
- * @return float - расчитанный шаг изменения коэффициента заполнения ШИМ.
- */
 float static Calc_duty_step(uint32_t time)
 {
     // Защита от передачи 0 в качестве параметра времени изменения. Так как
@@ -36,29 +34,17 @@ float static Calc_duty_step(uint32_t time)
     return (LED_FULL_DUTY - LED_ZERO_DUTY) / time;
 }
 
-/*! ============================================================================
- *  @brief Инициализация начальных параметров.
- *
- *  Устанавливаются стартовые значения параметров работы светодиода.
- *  В частности, настраивается режим мигания с периодом on/off 500ms.
- */
 void Led_init(Led_t *led)
 {
     _duty = 0;
     _duty_step = 0.0F;
-    _last_led_mode = LED_BLINK;
+    _last_led_mode = LED_IDLE;
 
     led->mode = LED_BLINK;
     led->param0 = 500;
     led->param1 = 500;
 }
 
-/*! ============================================================================
- *  @brief Обновление состояния светодиода.
- *
- *  Вызывается каждый рабочий цикл. В зависимости от выставленного режима работы,
- *  либо мигает, либо плавно тухнет или разгорается.
- */
 void Led_update(Led_t *led)
 {
     // Сохраняется текущее значение системного счётчика, чтобы вдруг внезапно он
@@ -116,7 +102,12 @@ void Led_update(Led_t *led)
             // Коэффициент заполнения увеличивается на расчитанный шаг.
             _duty += _duty_step;
             // Ограничивается максимальный коэффициент.
-            if (_duty > LED_FULL_DUTY) _duty = LED_FULL_DUTY;
+            if (_duty > LED_FULL_DUTY)
+            { 
+                _duty = LED_FULL_DUTY;
+                _last_led_mode = LED_IDLE;
+                led->mode = LED_IDLE;
+            }
 
             // Установка нового коэффициента
             TIM2->CCR2 = (uint16_t)(_duty);
@@ -138,7 +129,12 @@ void Led_update(Led_t *led)
             // Коэффициент заполнения уменьшается на расчитанный шаг.
             _duty -= _duty_step;
             // Ограничивается минимальный коэффициент.
-            if (_duty < LED_ZERO_DUTY) _duty = LED_ZERO_DUTY;
+            if (_duty < LED_ZERO_DUTY)
+            { 
+                _duty = LED_ZERO_DUTY;
+                _last_led_mode = LED_IDLE;
+                led->mode = LED_IDLE;
+            }
 
             // Установка нового коэффициента
             TIM2->CCR2 = (uint16_t)(_duty);
@@ -152,9 +148,6 @@ void Led_update(Led_t *led)
     _last_systick = _now_systick;
 }
 
-/*! ============================================================================
-    @brief Обработчик прерывания SysTic
-*/
 void SysTick_Handler(void)
 {
 	_systick--;

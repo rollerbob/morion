@@ -68,7 +68,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">led_control.h File Reference</div></div>
@@ -78,9 +80,16 @@ $(function() {
 <p>Заголовки функций модуля работы со светодиодом, основные параметры и определения новых типов данных  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="shared__types_8h_source.html">shared_types.h</a>&quot;</code><br />
 </div>
 <p><a href="led__control_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structled__t.html">led_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Описание объекта светодиода.  <a href="structled__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a2f610b35c14100a2a7da86ee8b7e95df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a2f610b35c14100a2a7da86ee8b7e95df">LED_FULL_DUTY</a>&#160;&#160;&#160;100.0F</td></tr>
@@ -90,39 +99,37 @@ Macros</h2></td></tr>
 <tr class="memdesc:ab64739f1e6b15d1c949ee374976e676b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Минимальный коэффициент заполнения ШИМ светодиода  <a href="led__control_8h.html#ab64739f1e6b15d1c949ee374976e676b">More...</a><br /></td></tr>
 <tr class="separator:ab64739f1e6b15d1c949ee374976e676b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a2390342374128158b63d468fda80abb5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structled__t.html">led_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a></td></tr>
+<tr class="memdesc:a2390342374128158b63d468fda80abb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Описание объекта светодиода.  <a href="led__control_8h.html#a2390342374128158b63d468fda80abb5">More...</a><br /></td></tr>
+<tr class="separator:a2390342374128158b63d468fda80abb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a2288997eea91f8327650278d71826418"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418">Led_mode_e</a> { <a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418a1577011fa256979ac1ad588c8d17d917">LED_BLINK</a>
-, <a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418add24a832f79ede3eb64d90d8d387201e">LED_FADE</a>
+<tr class="memitem:a2288997eea91f8327650278d71826418"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418">Led_mode_e</a> { <a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418ae5278e73c0216f235e3054df92cfb9e7">LED_IDLE</a>
+, <a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418a1577011fa256979ac1ad588c8d17d917">LED_BLINK</a>
+, <a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418a02ff03ed2da860778a15454bb403a992">LED_FADE_ON</a>
+, <a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418a487c905d84bf88274b90d6eb96998fb0">LED_FADE_OFF</a>
  }</td></tr>
 <tr class="memdesc:a2288997eea91f8327650278d71826418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перечисление возможных режимов работы светодиода  <a href="led__control_8h.html#a2288997eea91f8327650278d71826418">More...</a><br /></td></tr>
 <tr class="separator:a2288997eea91f8327650278d71826418"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad747b79a7586b5c1e0ff8449aadddf10"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10">Fade_mode_e</a> { <a class="el" href="led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10a539d6f5841aed5e74d50852de33d9663">FADE_ON</a>
-, <a class="el" href="led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10abdeeecd6b258c66d7e6e1551f3ec9054">FADE_OFF</a>
- }</td></tr>
-<tr class="memdesc:ad747b79a7586b5c1e0ff8449aadddf10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перечисление режимов плавного изменеия яркости свечения светодиода  <a href="led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10">More...</a><br /></td></tr>
-<tr class="separator:ad747b79a7586b5c1e0ff8449aadddf10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a040c02c99d35c3ee1fe6ae56bd8a8646"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a040c02c99d35c3ee1fe6ae56bd8a8646">Led_init</a> (void)</td></tr>
-<tr class="memdesc:a040c02c99d35c3ee1fe6ae56bd8a8646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация начальных параметров.  <a href="led__control_8h.html#a040c02c99d35c3ee1fe6ae56bd8a8646">More...</a><br /></td></tr>
-<tr class="separator:a040c02c99d35c3ee1fe6ae56bd8a8646"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab33d07dbbbfc85e9ff0676435c968087"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#ab33d07dbbbfc85e9ff0676435c968087">Led_update</a> (void)</td></tr>
-<tr class="memdesc:ab33d07dbbbfc85e9ff0676435c968087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обновление состояния светодиода.  <a href="led__control_8h.html#ab33d07dbbbfc85e9ff0676435c968087">More...</a><br /></td></tr>
-<tr class="separator:ab33d07dbbbfc85e9ff0676435c968087"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2b2c4b1c61fa8b9ddb06335a938493d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#aa2b2c4b1c61fa8b9ddb06335a938493d">Led_set_mode</a> (<a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418">Led_mode_e</a> mode)</td></tr>
-<tr class="memdesc:aa2b2c4b1c61fa8b9ddb06335a938493d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка режима работы светодиода.  <a href="led__control_8h.html#aa2b2c4b1c61fa8b9ddb06335a938493d">More...</a><br /></td></tr>
-<tr class="separator:aa2b2c4b1c61fa8b9ddb06335a938493d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a799b9ccdcaf2f6f889377d6f41374eee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a799b9ccdcaf2f6f889377d6f41374eee">Led_set_fade</a> (<a class="el" href="led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10">Fade_mode_e</a> mode, uint32_t time)</td></tr>
-<tr class="memdesc:a799b9ccdcaf2f6f889377d6f41374eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка направления изменеия яркости  <a href="led__control_8h.html#a799b9ccdcaf2f6f889377d6f41374eee">More...</a><br /></td></tr>
-<tr class="separator:a799b9ccdcaf2f6f889377d6f41374eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a073775b35b92056c0ac1c54a7f37608a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a073775b35b92056c0ac1c54a7f37608a">Led_set_blink</a> (uint32_t led_on_time, uint32_t led_off_time)</td></tr>
-<tr class="memdesc:a073775b35b92056c0ac1c54a7f37608a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка параметров мигания светодиода.  <a href="led__control_8h.html#a073775b35b92056c0ac1c54a7f37608a">More...</a><br /></td></tr>
-<tr class="separator:a073775b35b92056c0ac1c54a7f37608a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43533725d824f6d395d3c619106a7f9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a43533725d824f6d395d3c619106a7f9f">Led_init</a> (<a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a> *<a class="el" href="main_8c.html#adcf076f142b3fe00a7729c0af2774eed">led</a>)</td></tr>
+<tr class="memdesc:a43533725d824f6d395d3c619106a7f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация светодиода.  <a href="led__control_8h.html#a43533725d824f6d395d3c619106a7f9f">More...</a><br /></td></tr>
+<tr class="separator:a43533725d824f6d395d3c619106a7f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15ca996178d7d7887fd254722908598c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__control_8h.html#a15ca996178d7d7887fd254722908598c">Led_update</a> (<a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a> *<a class="el" href="main_8c.html#adcf076f142b3fe00a7729c0af2774eed">led</a>)</td></tr>
+<tr class="memdesc:a15ca996178d7d7887fd254722908598c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обновление состояния светодиода  <a href="led__control_8h.html#a15ca996178d7d7887fd254722908598c">More...</a><br /></td></tr>
+<tr class="separator:a15ca996178d7d7887fd254722908598c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Заголовки функций модуля работы со светодиодом, основные параметры и определения новых типов данных </p>
+<dl class="section author"><dt>Author</dt><dd>Андрей Белов (<a href="#" onclick="location.href='mai'+'lto:'+'gd.'+'tr'+'ieb'+'kr'+'aft'+'@g'+'mai'+'l.'+'com'; return false;">gd.tr<span style="display: none;">.nosp@m.</span>iebk<span style="display: none;">.nosp@m.</span>raft@<span style="display: none;">.nosp@m.</span>gmai<span style="display: none;">.nosp@m.</span>l.com</a>) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2021-09-22</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a2f610b35c14100a2a7da86ee8b7e95df" name="a2f610b35c14100a2a7da86ee8b7e95df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f610b35c14100a2a7da86ee8b7e95df">&#9670;&nbsp;</a></span>LED_FULL_DUTY</h2>
@@ -156,29 +163,25 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ad747b79a7586b5c1e0ff8449aadddf10" name="ad747b79a7586b5c1e0ff8449aadddf10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad747b79a7586b5c1e0ff8449aadddf10">&#9670;&nbsp;</a></span>Fade_mode_e</h2>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a2390342374128158b63d468fda80abb5" name="a2390342374128158b63d468fda80abb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2390342374128158b63d468fda80abb5">&#9670;&nbsp;</a></span>Led_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10">Fade_mode_e</a></td>
+          <td class="memname">typedef struct <a class="el" href="structled__t.html">led_t</a> <a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Перечисление режимов плавного изменеия яркости свечения светодиода </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad747b79a7586b5c1e0ff8449aadddf10a539d6f5841aed5e74d50852de33d9663" name="ad747b79a7586b5c1e0ff8449aadddf10a539d6f5841aed5e74d50852de33d9663"></a>FADE_ON&#160;</td><td class="fielddoc"><p >Плавное разгорание светодиода </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ad747b79a7586b5c1e0ff8449aadddf10abdeeecd6b258c66d7e6e1551f3ec9054" name="ad747b79a7586b5c1e0ff8449aadddf10abdeeecd6b258c66d7e6e1551f3ec9054"></a>FADE_OFF&#160;</td><td class="fielddoc"><p >Плавное затухание светодиода </p>
-</td></tr>
-</table>
+<p>Описание объекта светодиода. </p>
+<p >Включает в себя режим работы светодиода, временные параметры для разных режимов. </p>
 
 </div>
 </div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a2288997eea91f8327650278d71826418" name="a2288997eea91f8327650278d71826418"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2288997eea91f8327650278d71826418">&#9670;&nbsp;</a></span>Led_mode_e</h2>
 
@@ -193,17 +196,21 @@ Functions</h2></td></tr>
 
 <p>Перечисление возможных режимов работы светодиода </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2288997eea91f8327650278d71826418a1577011fa256979ac1ad588c8d17d917" name="a2288997eea91f8327650278d71826418a1577011fa256979ac1ad588c8d17d917"></a>LED_BLINK&#160;</td><td class="fielddoc"><p >режим мигания </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2288997eea91f8327650278d71826418ae5278e73c0216f235e3054df92cfb9e7" name="a2288997eea91f8327650278d71826418ae5278e73c0216f235e3054df92cfb9e7"></a>LED_IDLE&#160;</td><td class="fielddoc"><p >режим простоя </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2288997eea91f8327650278d71826418add24a832f79ede3eb64d90d8d387201e" name="a2288997eea91f8327650278d71826418add24a832f79ede3eb64d90d8d387201e"></a>LED_FADE&#160;</td><td class="fielddoc"><p >режим плавного изменения яркости </p>
+<tr><td class="fieldname"><a id="a2288997eea91f8327650278d71826418a1577011fa256979ac1ad588c8d17d917" name="a2288997eea91f8327650278d71826418a1577011fa256979ac1ad588c8d17d917"></a>LED_BLINK&#160;</td><td class="fielddoc"><p >режим мигания </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2288997eea91f8327650278d71826418a02ff03ed2da860778a15454bb403a992" name="a2288997eea91f8327650278d71826418a02ff03ed2da860778a15454bb403a992"></a>LED_FADE_ON&#160;</td><td class="fielddoc"><p >режим плавного розжига </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2288997eea91f8327650278d71826418a487c905d84bf88274b90d6eb96998fb0" name="a2288997eea91f8327650278d71826418a487c905d84bf88274b90d6eb96998fb0"></a>LED_FADE_OFF&#160;</td><td class="fielddoc"><p >режим плавного затухания </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a040c02c99d35c3ee1fe6ae56bd8a8646" name="a040c02c99d35c3ee1fe6ae56bd8a8646"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a040c02c99d35c3ee1fe6ae56bd8a8646">&#9670;&nbsp;</a></span>Led_init()</h2>
+<a id="a43533725d824f6d395d3c619106a7f9f" name="a43533725d824f6d395d3c619106a7f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43533725d824f6d395d3c619106a7f9f">&#9670;&nbsp;</a></span>Led_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,120 +218,25 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void Led_init </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a> *&#160;</td>
+          <td class="paramname"><em>led</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Инициализация начальных параметров. </p>
-<p >Устанавливаются стартовые значения параметров работы светодиода. В частности, настраивается режим мигания с периодом on/off 500ms. </p>
-
-</div>
-</div>
-<a id="a073775b35b92056c0ac1c54a7f37608a" name="a073775b35b92056c0ac1c54a7f37608a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a073775b35b92056c0ac1c54a7f37608a">&#9670;&nbsp;</a></span>Led_set_blink()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Led_set_blink </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>led_on_time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>led_off_time</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Установка параметров мигания светодиода. </p>
+<p>Инициализация светодиода. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">uint32_t</td><td>led_on_time - время включения светодиода, ms [0:4294967296]. </td></tr>
-    <tr><td class="paramname">uint32_t</td><td>led_of_time - время выключения светодиода, ms [0:4294967296]. </td></tr>
+    <tr><td class="paramname">Led_t*</td><td>led - Указатель на экземпляр светодиода </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a799b9ccdcaf2f6f889377d6f41374eee" name="a799b9ccdcaf2f6f889377d6f41374eee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a799b9ccdcaf2f6f889377d6f41374eee">&#9670;&nbsp;</a></span>Led_set_fade()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Led_set_fade </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="led__control_8h.html#ad747b79a7586b5c1e0ff8449aadddf10">Fade_mode_e</a>&#160;</td>
-          <td class="paramname"><em>mode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>time</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Установка направления изменеия яркости </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Fade_mode_e</td><td>mode - направление изменения. FADE_ON - плавное разгорание, FADE_OFF - плавное затухание. </td></tr>
-    <tr><td class="paramname">uint32_t</td><td>time - Время в течении которого происходит изменение яркости. Устанавливается в миллисекундах [0:4294967296] </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aa2b2c4b1c61fa8b9ddb06335a938493d" name="aa2b2c4b1c61fa8b9ddb06335a938493d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2b2c4b1c61fa8b9ddb06335a938493d">&#9670;&nbsp;</a></span>Led_set_mode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Led_set_mode </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="led__control_8h.html#a2288997eea91f8327650278d71826418">Led_mode_e</a>&#160;</td>
-          <td class="paramname"><em>mode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Установка режима работы светодиода. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Led_mode_e</td><td>mode - режим работы. LED_BLINK - мигание, LED_FADE - плавное изменение яркости. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab33d07dbbbfc85e9ff0676435c968087" name="ab33d07dbbbfc85e9ff0676435c968087"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab33d07dbbbfc85e9ff0676435c968087">&#9670;&nbsp;</a></span>Led_update()</h2>
+<a id="a15ca996178d7d7887fd254722908598c" name="a15ca996178d7d7887fd254722908598c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ca996178d7d7887fd254722908598c">&#9670;&nbsp;</a></span>Led_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -332,15 +244,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void Led_update </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a> *&#160;</td>
+          <td class="paramname"><em>led</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Обновление состояния светодиода. </p>
-<p >Вызывается каждый рабочий цикл. В зависимости от выставленного режима работы, либо мигает, либо плавно тухнет или разгорается. </p>
+<p>Обновление состояния светодиода </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Led_t*</td><td>led - Указатель на экземпляр светодиода </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

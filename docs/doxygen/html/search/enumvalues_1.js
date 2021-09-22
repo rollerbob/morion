@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['led_5fblink_0',['LED_BLINK',['../led__control_8h.html#a2288997eea91f8327650278d71826418a1577011fa256979ac1ad588c8d17d917',1,'led_control.h']]],
-  ['led_5ffade_1',['LED_FADE',['../led__control_8h.html#a2288997eea91f8327650278d71826418add24a832f79ede3eb64d90d8d387201e',1,'led_control.h']]]
+  ['error_5fcmd_0',['ERROR_CMD',['../shared__types_8h.html#a15291a198a40d089953f7090fe80524ba02a38090693d31e650ff3d711d8fd0cd',1,'shared_types.h']]],
+  ['error_5fparam_5fcmd_1',['ERROR_PARAM_CMD',['../shared__types_8h.html#a15291a198a40d089953f7090fe80524badb3d50ee2999cd8ac1945fa99501dedf',1,'shared_types.h']]]
 ];

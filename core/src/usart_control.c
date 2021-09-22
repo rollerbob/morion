@@ -1,9 +1,19 @@
+/**
+ * @file usart_control.c
+ * @author Андрей Белов (gd.triebkraft@gmail.com)
+ * @brief Реализация модуля работы с интерфейсов USART.
+ * @version 0.1
+ * @date 2021-09-22
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "usart_control.h"
 #include "parser.h"
 
-uint8_t _in_buff[USART_BUFF_SIZE];
-volatile uint32_t _in_head;
-volatile uint32_t _uart_flags;
+uint8_t _in_buff[USART_BUFF_SIZE]; ///< Входной буфер.
+volatile uint32_t _in_head;        ///< Индекс входного буфера.
+volatile uint32_t _uart_flags;     ///< Статусные флаги модуля.
 
 void Usart_init(void)
 {
@@ -41,11 +51,10 @@ void Usart_send_str_DMA(const char *str, uint32_t size)
     }
 }
 
-uint8_t *Usart_get_inbuff(void)
-{
-    return _in_buff;
-}
-
+/**
+ * @brief Обработчик прерываний от USART
+ * 
+ */
 void USART2_IRQHandler(void)
 {
     volatile uint32_t isr = USART2->ISR;
@@ -58,13 +67,19 @@ void USART2_IRQHandler(void)
         _in_buff[_in_head++] = in;
         _in_head &= USART_BUFF_MSK;
 
+        // Если обнаружен символ <LF>
         if (in == '\n')
         {
+            // Выставляется флаг готовности буфера к разбору.
             _uart_flags |= USART_MSG_RCV_FLG;
         }
     }
 }
 
+/**
+ * @brief Обработчик прерываний от DMA
+ * 
+ */
 void DMA1_Channel4_5_IRQHandler (void)
 {
     if (DMA1->ISR & DMA_ISR_TCIF4)

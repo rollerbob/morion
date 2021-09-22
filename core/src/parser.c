@@ -1,10 +1,24 @@
+/**
+ * @file parser.c
+ * @author Андрей Белов (gd.triebkraft@gmail.com)
+ * @brief Парсер входного буфера.
+ * 
+ * Разбирает принятые от терминала пользователя данные. Находит валдные команды
+ * и параметры.
+ * 
+ * @version 0.1
+ * @date 2021-09-22
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "parser.h"
 
 // Шаблоны команд
 uint8_t help_rqst_str[] = "h\n";
-uint8_t blink_rqst_str[] = "blink %";
-uint8_t fade_od_rqst_str[] = "fade on %";
-uint8_t fade_off_rqst_str[] = "fade off %";
+uint8_t blink_rqst_str[] = "blink ";
+uint8_t fade_od_rqst_str[] = "fade on ";
+uint8_t fade_off_rqst_str[] = "fade off ";
 uint8_t stop_rqst_str[] = "stop\n";
 
 // Массив указателей на эти шаблоны
@@ -14,7 +28,8 @@ uint8_t *requests[] = {help_rqst_str, blink_rqst_str, fade_od_rqst_str, \
 static uint8_t *_in_buff;
 
 // ====== Локальные функции ====================================================
-/*! ============================================================================
+
+/**
  * @brief Сравнивает две строки и возвращает позицию с которой в первой строке
  * начинается вторая строка или 0xFFFFFFFF если в первой строке вторая строка не
  * найдена.
@@ -27,9 +42,9 @@ static uint8_t *_in_buff;
  */
 uint32_t _Str_cmpr(uint8_t *str1, uint32_t size1, uint8_t *str2, uint32_t size2);
 
-/*! ============================================================================
+/**
  * @brief Поиск параметров команды во входящем буфере. Ищуться все вхождения
- * разделённые '%', затем эти вхождения проверяются на валидность и сохраняются
+ * разделённые "%", затем эти вхождения проверяются на валидность и сохраняются
  * внутри объекта команды.
  *
  * @param buff буфер в котором происходит поиск.
@@ -40,6 +55,9 @@ uint32_t _Str_cmpr(uint8_t *str1, uint32_t size1, uint8_t *str2, uint32_t size2)
  * параметры успешно установлены в принятой команде.
  */
 uint32_t _Str_search_param(uint8_t *buff, uint32_t buff_size, Rcvd_cmd_t *cmd, uint32_t amount);
+
+
+// =============================================================================
 
 void Parser_init(uint8_t *buff)
 {
@@ -80,12 +98,14 @@ void Parser_work(Rcvd_cmd_t *cmd,  uint32_t msg_size)
     switch (cmd->cmd)
     {
         case BLINK_CMD:
-            _Str_search_param(_in_buff, msg_size, cmd, 2);
+            if (!_Str_search_param(_in_buff, msg_size, cmd, 2))
+                cmd->cmd = ERROR_PARAM_CMD;
             break;
 
         case FADE_ON_CMD:
         case FADE_OFF_CMD:
-            _Str_search_param(_in_buff, msg_size, cmd, 1);
+            if (!_Str_search_param(_in_buff, msg_size, cmd, 1))
+                cmd->cmd = ERROR_PARAM_CMD;
             break;
 
         default:
@@ -122,13 +142,13 @@ uint32_t _Str_search_param(uint8_t *buff, uint32_t buff_size, Rcvd_cmd_t *cmd, u
 {
     if (amount > MAX_CMD_PARAM_AMOUNT) amount = MAX_CMD_PARAM_AMOUNT;
 
-    uint32_t param_entrys[MAX_CMD_PARAM_AMOUNT * 2];
+    uint32_t div_entrys[MAX_CMD_PARAM_AMOUNT * 2];
     uint32_t entrys_cntr = 0;
 
     // Нахожу все позиции с символом '%'
     for (uint32_t i = 0; i < buff_size; i++)
     {
-        if (buff[i] == '%') param_entrys[entrys_cntr++] = i;
+        if (buff[i] == '%') div_entrys[entrys_cntr++] = i;
     }
 
 
@@ -144,7 +164,7 @@ uint32_t _Str_search_param(uint8_t *buff, uint32_t buff_size, Rcvd_cmd_t *cmd, u
     // проверяется сама команда. теперь надо проверить что закрывающий '%' стоит
     // на предпоследней позциции в буфере
 
-    if (param_entrys[amount * 2 - 1] != buff_size - 1)
+    if (div_entrys[amount * 2 - 1] != buff_size - 2)
         return 0;
 
     // Проверка что между вторым и третьим '%' ровно один пробел
@@ -153,7 +173,7 @@ uint32_t _Str_search_param(uint8_t *buff, uint32_t buff_size, Rcvd_cmd_t *cmd, u
         // Шаблон
         uint8_t templt[] = "% %";
         uint32_t check = 0;
-        uint32_t start_check = param_entrys[1];
+        uint32_t start_check = div_entrys[1];
 
         for (uint32_t i = 0; i < 3; i++)
             check += buff[start_check + i] ^ templt[i];
@@ -166,12 +186,12 @@ uint32_t _Str_search_param(uint8_t *buff, uint32_t buff_size, Rcvd_cmd_t *cmd, u
     // считается последовательность символов из дипазона ['0'(0x30) : '9'(0x39)]
 
     uint32_t params[] = {0, 0};
-    for (uint32_t a = 0; a < (amount - 1); a++ )
+    for (uint32_t a = 0; a < amount; a++ )
     {
         uint32_t param = 0;
-        uint32_t factor = 0;
+        uint32_t factor = 1;
 
-        for (uint32_t i = param_entrys[1]; i > param_entrys[0]; i--)
+        for (uint32_t i = div_entrys[MAX_CMD_PARAM_AMOUNT * a + 1] - 1; i > div_entrys[MAX_CMD_PARAM_AMOUNT * a]; i--)
         {
             if (buff[i] < 0x30 || buff[i] > 0x39)
                 return 0;

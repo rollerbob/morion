@@ -68,13 +68,17 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+
+<p>Главный модуль программы.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="led__control_8h_source.html">led_control.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="usart__control_8h_source.html">usart_control.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -82,10 +86,38 @@ Functions</h2></td></tr>
 <tr class="memdesc:a5f9451bbe05886ab0610b7fee4587871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация микроконтроллера  <a href="main_8c.html#a5f9451bbe05886ab0610b7fee4587871">More...</a><br /></td></tr>
 <tr class="separator:a5f9451bbe05886ab0610b7fee4587871"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6288eba0f8e8ad3ab1544ad731eb7667"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667">main</a> (void)</td></tr>
-<tr class="memdesc:a6288eba0f8e8ad3ab1544ad731eb7667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Точка входа в программу  <a href="main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667">More...</a><br /></td></tr>
 <tr class="separator:a6288eba0f8e8ad3ab1544ad731eb7667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:adcf076f142b3fe00a7729c0af2774eed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#adcf076f142b3fe00a7729c0af2774eed">led</a></td></tr>
+<tr class="memdesc:adcf076f142b3fe00a7729c0af2774eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Светодиод  <a href="main_8c.html#adcf076f142b3fe00a7729c0af2774eed">More...</a><br /></td></tr>
+<tr class="separator:adcf076f142b3fe00a7729c0af2774eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc8f36e32f4239c3bb9c7e2a733db1df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_rcvd__cmd__t.html">Rcvd_cmd_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#abc8f36e32f4239c3bb9c7e2a733db1df">cmd</a></td></tr>
+<tr class="memdesc:abc8f36e32f4239c3bb9c7e2a733db1df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Принятая команда  <a href="main_8c.html#abc8f36e32f4239c3bb9c7e2a733db1df">More...</a><br /></td></tr>
+<tr class="separator:abc8f36e32f4239c3bb9c7e2a733db1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3381059b8e0747fd94f0accdc764e9d9"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a3381059b8e0747fd94f0accdc764e9d9">hello_str</a> []</td></tr>
+<tr class="separator:a3381059b8e0747fd94f0accdc764e9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a592ba96959dd8a34892445a44f2ebda1"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a592ba96959dd8a34892445a44f2ebda1">help_str</a> []</td></tr>
+<tr class="separator:a592ba96959dd8a34892445a44f2ebda1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc111be28f3c71f7b15a6d5c2ec6ea6"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4fc111be28f3c71f7b15a6d5c2ec6ea6">blink_str</a> [] = &quot;\nBlink mode setted.\n&gt;&quot;</td></tr>
+<tr class="separator:a4fc111be28f3c71f7b15a6d5c2ec6ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a302175cba56b21ca75dd531828a94294"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a302175cba56b21ca75dd531828a94294">fade_str</a> [] = &quot;\nFade mode setted.\n&gt;&quot;</td></tr>
+<tr class="separator:a302175cba56b21ca75dd531828a94294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bbc3868077c1b4e1a20744dd0353519"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0bbc3868077c1b4e1a20744dd0353519">stop_str</a> [] = &quot;\nSystem stopped.\nWait 10 seconds for reset.\n&quot;</td></tr>
+<tr class="separator:a0bbc3868077c1b4e1a20744dd0353519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba8c51a2364f9eee6cf738947632219e"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#aba8c51a2364f9eee6cf738947632219e">unknow_cmd_str</a> [] = &quot;\nUnknown command. Send 'h' to list all aviable commands.\n&gt;&quot;</td></tr>
+<tr class="separator:aba8c51a2364f9eee6cf738947632219e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea717bcfe8b8a99b51d2de19ce3cb7ab"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#aea717bcfe8b8a99b51d2de19ce3cb7ab">param_err_str</a> [] = &quot;\nWrong parameters\n&quot;</td></tr>
+<tr class="separator:aea717bcfe8b8a99b51d2de19ce3cb7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Главный модуль программы. </p>
+<dl class="section author"><dt>Author</dt><dd>Андрей Белов (<a href="#" onclick="location.href='mai'+'lto:'+'gd.'+'tr'+'ieb'+'kr'+'aft'+'@g'+'mai'+'l.'+'com'; return false;">gd.tr<span style="display: none;">.nosp@m.</span>iebk<span style="display: none;">.nosp@m.</span>raft@<span style="display: none;">.nosp@m.</span>gmai<span style="display: none;">.nosp@m.</span>l.com</a>) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2021-09-22</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a6288eba0f8e8ad3ab1544ad731eb7667" name="a6288eba0f8e8ad3ab1544ad731eb7667"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6288eba0f8e8ad3ab1544ad731eb7667">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -101,8 +133,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Точка входа в программу </p>
 
 </div>
 </div>
@@ -123,7 +153,146 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Инициализация микроконтроллера </p>
-<p >Инциализируется система тактирования, порты ввода вывода, UART, таймеры, DMA </p>
+<p >Инциализируется система тактирования, порты ввода/вывода, UART, таймеры, DMA </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a4fc111be28f3c71f7b15a6d5c2ec6ea6" name="a4fc111be28f3c71f7b15a6d5c2ec6ea6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc111be28f3c71f7b15a6d5c2ec6ea6">&#9670;&nbsp;</a></span>blink_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char blink_str[] = &quot;\nBlink mode setted.\n&gt;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc8f36e32f4239c3bb9c7e2a733db1df" name="abc8f36e32f4239c3bb9c7e2a733db1df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc8f36e32f4239c3bb9c7e2a733db1df">&#9670;&nbsp;</a></span>cmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_rcvd__cmd__t.html">Rcvd_cmd_t</a> cmd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Принятая команда </p>
+
+</div>
+</div>
+<a id="a302175cba56b21ca75dd531828a94294" name="a302175cba56b21ca75dd531828a94294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a302175cba56b21ca75dd531828a94294">&#9670;&nbsp;</a></span>fade_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char fade_str[] = &quot;\nFade mode setted.\n&gt;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3381059b8e0747fd94f0accdc764e9d9" name="a3381059b8e0747fd94f0accdc764e9d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3381059b8e0747fd94f0accdc764e9d9">&#9670;&nbsp;</a></span>hello_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char hello_str[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">&quot;\nLED control panel.\nEnter command or &#39;h&#39; for help.\n\</span></div>
+<div class="line"><span class="stringliteral">All commands must end by &lt;LF&gt;(0x0A)\n&gt;&quot;</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a592ba96959dd8a34892445a44f2ebda1" name="a592ba96959dd8a34892445a44f2ebda1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a592ba96959dd8a34892445a44f2ebda1">&#9670;&nbsp;</a></span>help_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char help_str[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">&quot;\n=========================================\n\</span></div>
+<div class="line"><span class="stringliteral">\&quot;h\&quot; - this help\n\</span></div>
+<div class="line"><span class="stringliteral">\&quot;blink %on time in ms% %off time in ms%\&quot; - blink mode.\n\</span></div>
+<div class="line"><span class="stringliteral">\&quot;fade on %time in ms%\&quot; - fade on mode.\n\</span></div>
+<div class="line"><span class="stringliteral">\&quot;fade off %time in ms%\&quot; - fade off mode.\n\</span></div>
+<div class="line"><span class="stringliteral">\&quot;stop\&quot; - CPU HALTED for 10 sec, then will reset.\n&gt;&quot;</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adcf076f142b3fe00a7729c0af2774eed" name="adcf076f142b3fe00a7729c0af2774eed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf076f142b3fe00a7729c0af2774eed">&#9670;&nbsp;</a></span>led</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="led__control_8h.html#a2390342374128158b63d468fda80abb5">Led_t</a> led</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Светодиод </p>
+
+</div>
+</div>
+<a id="aea717bcfe8b8a99b51d2de19ce3cb7ab" name="aea717bcfe8b8a99b51d2de19ce3cb7ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea717bcfe8b8a99b51d2de19ce3cb7ab">&#9670;&nbsp;</a></span>param_err_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char param_err_str[] = &quot;\nWrong parameters\n&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0bbc3868077c1b4e1a20744dd0353519" name="a0bbc3868077c1b4e1a20744dd0353519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bbc3868077c1b4e1a20744dd0353519">&#9670;&nbsp;</a></span>stop_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char stop_str[] = &quot;\nSystem stopped.\nWait 10 seconds for reset.\n&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aba8c51a2364f9eee6cf738947632219e" name="aba8c51a2364f9eee6cf738947632219e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba8c51a2364f9eee6cf738947632219e">&#9670;&nbsp;</a></span>unknow_cmd_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char unknow_cmd_str[] = &quot;\nUnknown command. Send 'h' to list all aviable commands.\n&gt;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,21 +1,41 @@
+/**
+ * @file main.c
+ * @author Андрей Белов (gd.triebkraft@gmail.com)
+ * @brief Главный модуль программы.
+ * @version 0.1
+ * @date 2021-09-22
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "main.h"
 #include "led_control.h"
 #include "usart_control.h"
 
 
 // ====== Глобальные перменные =================================================
-// Светодиод
+/// Светодиод
 Led_t led;
 
-// Принятая команда
+/// Принятая команда
 Rcvd_cmd_t cmd;
 
 // ====== Строки ===============================================================
-const char hello_str[] = "LED control panel.\nEnter command or 'h' for help.\n>";
+const char hello_str[] = "\nLED control panel.\nEnter command or 'h' for help.\n\
+All commands must end by <LF>(0x0A)\n>";
 
-const char help_str[] = "\nHalp string!\nHalp me, please!\n>";
+const char help_str[] = "\n=========================================\n\
+\"h\" - this help\n\
+\"blink %on time in ms% %off time in ms%\" - blink mode.\n\
+\"fade on %time in ms%\" - fade on mode.\n\
+\"fade off %time in ms%\" - fade off mode.\n\
+\"stop\" - CPU HALTED for 10 sec, then will reset.\n>";
 
-const char stop_str[] = "\nSystem stopped.\nWait for reset.\n";
+const char blink_str[] = "\nBlink mode setted.\n>";
+
+const char fade_str[] = "\nFade mode setted.\n>";
+
+const char stop_str[] = "\nSystem stopped.\nWait 10 seconds for reset.\n";
 
 const char unknow_cmd_str[] = "\nUnknown command. Send 'h' to list all aviable commands.\n>";
 
@@ -30,8 +50,8 @@ void Setup_MCU(void)
 {
     // ====== Инициализация переменных =========================================
     cmd.cmd = NO_CMD;
-    cmd.param0 = 0;
-    cmd.param1 = 0;
+    cmd.param0 = 500;
+    cmd.param1 = 500;
 
     led.mode = LED_BLINK;
     led.param0 = 500;
@@ -164,12 +184,25 @@ void Setup_MCU(void)
     DMA1_Channel4->CPAR = (uint32_t)&(USART2->TDR); // регистр передатчика  USART2
 
     NVIC_EnableIRQ(DMA1_Channel4_5_IRQn);
+
+    // ====== Настройка WATCHDOG ===============================================
+    DBGMCU->APB1FZ |= DBGMCU_APB1_FZ_DBG_IWDG_STOP;
+    // Включение watchdog;
+    IWDG->KR = 0xCCCC;
+    // Разрешаю доступ к регистрам watchdog;
+    IWDG->KR = 0x5555;
+    IWDG->PR = 0x6;          // делитель 128
+    IWDG->RLR = 2500;        // перезагрузка на 2500
+    // Итого это даёт задержку сброса в 10 секунд
+    // Жду пока установяться все значения.
+    while (IWDG->SR)
+    {
+        ;
+   }
 }
 
-/**
-    @brief Точка входа в программу
-*/
-int main(void)
+// ====== Точка входа ==========================================================
+void main(void)
 {
 	Setup_MCU();
     Led_init(&led);
@@ -178,10 +211,15 @@ int main(void)
     Usart_send_str_DMA(hello_str, sizeof(hello_str) - 1);
 
  	while(1)
-	{
+    {
+        // Сброс watchdog
+        IWDG->KR = 0xAAAA;
+
+        // Обновление модулей светодиода и USART
         Led_update(&led);
         Usart_update(&cmd);
 
+        // Обработка принятой команды
         switch(cmd.cmd)
         {
         case NO_CMD:
@@ -191,18 +229,21 @@ int main(void)
             Usart_send_str_DMA(help_str, sizeof(help_str) - 1);
 
         case BLINK_CMD:
+            Usart_send_str_DMA(blink_str, sizeof(blink_str) - 1);
             led.mode = LED_BLINK;
             led.param0 = cmd.param0;
             led.param1 = cmd.param1;
             break;
 
         case FADE_ON_CMD:
+            Usart_send_str_DMA(fade_str, sizeof(fade_str) - 1);
             led.mode = LED_FADE_ON;
             led.param0 = cmd.param0;
             led.param1 = cmd.param1;
             break;
 
         case FADE_OFF_CMD:
+            Usart_send_str_DMA(fade_str, sizeof(fade_str) - 1);
             led.mode = LED_FADE_OFF;
             led.param0 = cmd.param0;
             led.param1 = cmd.param1;
@@ -210,6 +251,10 @@ int main(void)
 
         case STOP_CMD:
             Usart_send_str_DMA(stop_str, sizeof(stop_str) - 1);
+            while(1)
+            {
+                ;
+            }
             break;
 
         case ERROR_CMD:
@@ -226,8 +271,6 @@ int main(void)
 
         cmd.cmd = NO_CMD;
 	}
-
-    return 0;
 }
 
 

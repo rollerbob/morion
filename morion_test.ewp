@@ -2143,7 +2143,10 @@
                 <name>$PROJ_DIR$\core\inc\main.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\core\inc\uart_control.h</name>
+                <name>$PROJ_DIR$\core\inc\parser.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\core\inc\usart_control.h</name>
             </file>
         </group>
         <group>
@@ -2155,7 +2158,10 @@
                 <name>$PROJ_DIR$\core\src\main.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\core\src\uart_control.c</name>
+                <name>$PROJ_DIR$\core\src\parser.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\core\src\usart_control.c</name>
             </file>
         </group>
     </group>
