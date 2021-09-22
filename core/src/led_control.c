@@ -23,6 +23,9 @@ static float _duty;
 // заполнения ШИМ светодиода при каждом изменении счётчика системных прерываний
 static float _duty_step;
 
+// Направление плавного изменения яркости
+static uint32_t _led_fade_dir;
+
 static Led_mode_e _last_led_mode;
 
 float static Calc_duty_step(uint32_t time)
@@ -82,6 +85,50 @@ void Led_update(Led_t *led)
             }
 
             // Установка нового коэффициента заполнения ШИМ.
+            TIM2->CCR2 = (uint16_t)(_duty);
+        }
+        break;
+
+    // Режим плавного миганиня
+    case LED_FADE:
+        if (_last_led_mode != LED_FADE)
+        {
+            _last_led_mode = LED_FADE;
+            _duty = LED_ZERO_DUTY;
+            _duty_step = Calc_duty_step(led->param0);
+            _led_fade_dir = 1;
+            _systick = led->param0;
+        }
+
+        if (_now_systick != _last_systick)
+        {
+            if (_led_fade_dir)
+            {
+                // Коэффициент заполнения увеличивается на расчитанный шаг.
+                _duty += _duty_step;
+                // Ограничивается максимальный коэффициент.
+                if (_duty > LED_FULL_DUTY)
+                { 
+                    _duty = LED_FULL_DUTY;
+                    _led_fade_dir = 0;
+                    _duty_step = Calc_duty_step(led->param1);
+                    _systick = led->param1;
+                }
+            } else
+            {
+                // Коэффициент заполнения уменьшается на расчитанный шаг.
+                _duty -= _duty_step;
+                // Ограничивается минимальный коэффициент.
+                if (_duty < LED_ZERO_DUTY)
+                { 
+                    _duty = LED_ZERO_DUTY;
+                    _led_fade_dir = 1;
+                    _duty_step = Calc_duty_step(led->param0);
+                    _systick = led->param0;
+                }
+            }
+
+            // Установка нового коэффициента
             TIM2->CCR2 = (uint16_t)(_duty);
         }
         break;

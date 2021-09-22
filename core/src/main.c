@@ -27,6 +27,7 @@ All commands must end by <LF>(0x0A)\n>";
 const char help_str[] = "\n=========================================\n\
 \"h\" - this help\n\
 \"blink %on time in ms% %off time in ms%\" - blink mode.\n\
+\"fade %on time in ms% %off time in ms%\" - fade on and off mode.\n\
 \"fade on %time in ms%\" - fade on mode.\n\
 \"fade off %time in ms%\" - fade off mode.\n\
 \"stop\" - CPU HALTED for 10 sec, then will reset.\n>";
@@ -198,7 +199,7 @@ void Setup_MCU(void)
     while (IWDG->SR)
     {
         ;
-   }
+    }
 }
 
 // ====== Точка входа ==========================================================
@@ -227,10 +228,18 @@ void main(void)
 
         case HELP_CMD:
             Usart_send_str_DMA(help_str, sizeof(help_str) - 1);
+            break;
 
         case BLINK_CMD:
             Usart_send_str_DMA(blink_str, sizeof(blink_str) - 1);
             led.mode = LED_BLINK;
+            led.param0 = cmd.param0;
+            led.param1 = cmd.param1;
+            break;
+
+        case FADE_CMD:
+            Usart_send_str_DMA(fade_str, sizeof(fade_str) - 1);
+            led.mode = LED_FADE;
             led.param0 = cmd.param0;
             led.param1 = cmd.param1;
             break;

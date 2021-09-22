@@ -11,9 +11,9 @@
 #include "usart_control.h"
 #include "parser.h"
 
-uint8_t _in_buff[USART_BUFF_SIZE]; ///< Входной буфер.
-volatile uint32_t _in_head;        ///< Индекс входного буфера.
-volatile uint32_t _uart_flags;     ///< Статусные флаги модуля.
+uint8_t _in_buff[USART_BUFF_SIZE];
+volatile uint32_t _in_head;
+volatile uint32_t _uart_flags;
 
 void Usart_init(void)
 {

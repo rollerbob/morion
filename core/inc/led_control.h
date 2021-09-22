@@ -25,6 +25,7 @@ typedef enum
 {
     LED_IDLE,                           ///< режим простоя
     LED_BLINK,                          ///< режим мигания
+    LED_FADE,                           ///< режим плавного мигания
     LED_FADE_ON,                        ///< режим плавного розжига
     LED_FADE_OFF                        ///< режим плавного затухания
 } Led_mode_e;

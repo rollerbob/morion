@@ -17,13 +17,14 @@
 // Шаблоны команд
 uint8_t help_rqst_str[] = "h\n";
 uint8_t blink_rqst_str[] = "blink ";
+uint8_t fade_rqst_str[] = "fade %";
 uint8_t fade_od_rqst_str[] = "fade on ";
 uint8_t fade_off_rqst_str[] = "fade off ";
 uint8_t stop_rqst_str[] = "stop\n";
 
 // Массив указателей на эти шаблоны
-uint8_t *requests[] = {help_rqst_str, blink_rqst_str, fade_od_rqst_str, \
-                          fade_off_rqst_str, stop_rqst_str};
+uint8_t *requests[] = {help_rqst_str, blink_rqst_str, fade_rqst_str, \
+                        fade_od_rqst_str, fade_off_rqst_str, stop_rqst_str};
 
 static uint8_t *_in_buff;
 
@@ -98,6 +99,7 @@ void Parser_work(Rcvd_cmd_t *cmd,  uint32_t msg_size)
     switch (cmd->cmd)
     {
         case BLINK_CMD:
+        case FADE_CMD:
             if (!_Str_search_param(_in_buff, msg_size, cmd, 2))
                 cmd->cmd = ERROR_PARAM_CMD;
             break;
