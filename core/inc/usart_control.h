@@ -12,8 +12,8 @@
 #define USART_BUSY_FLG          (1 << 1) // 1 - идёт передача по UART. 0 - передатчик свободен.
 
 void Usart_init(void);
-void Usart_update(void);
+void Usart_update(Rcvd_cmd_t *cmd_ptr);
 uint8_t *Usart_get_inbuff(void);
-void Usart_send_str_DMA(char *str, uint32_t size);
+void Usart_send_str_DMA(const char *str, uint32_t size);
 
 #endif

@@ -5,13 +5,14 @@
 
 typedef enum
 {
-    NO_CMD,
-    HELP_CMD,
+    HELP_CMD = 0,
     BLINK_CMD,
     FADE_ON_CMD,
     FADE_OFF_CMD,
     STOP_CMD,
-    ERROR_CMD
+    NO_CMD,
+    ERROR_CMD,
+    ERROR_PARAM_CMD
 } Command_e;
 
 typedef struct

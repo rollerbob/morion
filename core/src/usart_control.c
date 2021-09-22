@@ -1,4 +1,5 @@
 #include "usart_control.h"
+#include "parser.h"
 
 uint8_t _in_buff[USART_BUFF_SIZE];
 volatile uint32_t _in_head;
@@ -8,17 +9,20 @@ void Usart_init(void)
 {
     _in_head = 0;
     _uart_flags = 0;
+    Parser_init(_in_buff);
 }
 
-void Usart_update(void)
+void Usart_update(Rcvd_cmd_t *cmd_ptr)
 {
     if (_uart_flags & USART_MSG_RCV_FLG)
     {
         _uart_flags &= ~USART_MSG_RCV_FLG;
+        Parser_work(cmd_ptr, _in_head);
+        _in_head = 0;
     }
 }
 
-void Usart_send_str_DMA(char *str, uint32_t size)
+void Usart_send_str_DMA(const char *str, uint32_t size)
 {
     // Если модуль USART свободен
     if (!(_uart_flags & USART_BUSY_FLG))
@@ -51,14 +55,12 @@ void USART2_IRQHandler(void)
     {
         uint8_t in = (uint8_t)(USART2->RDR);
 
-        if (in == 0x0D)
+        _in_buff[_in_head++] = in;
+        _in_head &= USART_BUFF_MSK;
+
+        if (in == '\n')
         {
             _uart_flags |= USART_MSG_RCV_FLG;
-            _in_head = 0;
-        } else
-        {
-            _in_buff[_in_head++] = in;
-            _in_head &= USART_BUFF_MSK;
         }
     }
 }
